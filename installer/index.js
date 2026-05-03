@@ -289,7 +289,8 @@ async function addTool(toolName) {
   const name    = path.basename(CWD);
   const stack   = (config.match(/stack\s*=\s*"([^"]+)"/) || [])[1] || '';
   const vars    = { PROJECT_NAME: name, STACK: stack, DATE: new Date().toISOString().slice(0, 10), VERSION: PKG.version, PROVIDERS_STATUS: buildProvidersTable() };
-  const tools   = { [toolName]: true, claude: false, cursor: false, copilot: false, gemini: false };
+  const tools   = { claude: false, cursor: false, copilot: false, gemini: false };
+  if (toolName in tools) tools[toolName] = true;
 
   log(`\nAdicionando ${toolName}:\n`);
   generateToolConfigs(tools, vars);
