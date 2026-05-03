@@ -2,7 +2,15 @@
   "name": "boaredev",
   "version": "0.1.0",
   "description": "Protocol + skills for AI-assisted development. Install once, works with Claude, Cursor, Copilot, Gemini.",
-  "keywords": ["ai", "claude", "cursor", "copilot", "gemini", "developer-protocol", "skills"],
+  "keywords": [
+    "ai",
+    "claude",
+    "cursor",
+    "copilot",
+    "gemini",
+    "developer-protocol",
+    "skills"
+  ],
   "license": "MIT",
   "private": false,
   "type": "commonjs",
@@ -11,7 +19,7 @@
     "publish:dry-run": "npm publish --dry-run"
   },
   "bin": {
-    "boaredev": "./bin/cli.js"
+    "boaredev": "bin/cli.js"
   },
   "main": "./installer/index.js",
   "files": [
