@@ -123,24 +123,43 @@ npx boaredev keys export >> ~/.bashrc && source ~/.bashrc
 🇺🇸 BoareDev ships 16 specialist skills.
 🇧🇷 O BoareDev entrega 16 skills especialistas.
 
-| Skill | Purpose / Função |
-|-------|-------------------|
-| `/modelo` | Classify complexity and recommend model tier / Classifica a complexidade e recomenda a faixa de modelo |
-| `/arquiteto` | Module design and boundaries / Design de módulos e fronteiras |
-| `/gpt-draft` | Generate PHP boilerplate / Gera boilerplate PHP |
-| `/gemini-explore` | Read multiple files in parallel / Lê vários arquivos em paralelo |
-| `/criar-teste` | Generate PHPUnit tests / Gera testes PHPUnit |
-| `/revisar-padrao` | Post-implementation review / Revisão pós-implementação |
-| `/cleancode` | Readability and naming / Legibilidade e nomes |
-| `/dba` | Schema, indexes, and query review / Schema, índices e revisão de queries |
-| `/lgpd` | LGPD and sensitive data / LGPD e dados sensíveis |
-| `/seguranca` | OWASP and hardening / OWASP e hardening |
-| `/qa` | Test strategy and edge cases / Estratégia de testes e edge cases |
-| `/uxdesign` | UI/UX for Bootstrap 5 + Vanilla JS / UI/UX para Bootstrap 5 + Vanilla JS |
-| `/novo-modulo` | Scaffold a CRUD module / Cria um módulo CRUD |
-| `/novo-projeto` | Bootstrap a new project / Inicializa um novo projeto |
-| `/analista-dados` | Reports and KPIs / Relatórios e KPIs |
-| `/skill-creator` | Create or improve skills / Cria ou melhora skills |
+| Skill | English |
+|-------|---------|
+| `/modelo` | Classify complexity and recommend model tier |
+| `/arquiteto` | Module design and boundaries |
+| `/gpt-draft` | Generate PHP boilerplate |
+| `/gemini-explore` | Read multiple files in parallel |
+| `/criar-teste` | Generate PHPUnit tests |
+| `/revisar-padrao` | Post-implementation review |
+| `/cleancode` | Readability and naming |
+| `/dba` | Schema, indexes, and query review |
+| `/lgpd` | LGPD and sensitive data |
+| `/seguranca` | OWASP and hardening |
+| `/qa` | Test strategy and edge cases |
+| `/uxdesign` | UI/UX for Bootstrap 5 + Vanilla JS |
+| `/novo-modulo` | Scaffold a CRUD module |
+| `/novo-projeto` | Bootstrap a new project |
+| `/analista-dados` | Reports and KPIs |
+| `/skill-creator` | Create or improve skills |
+
+| Skill | Português |
+|-------|-----------|
+| `/modelo` | Classifica a complexidade e recomenda a faixa de modelo |
+| `/arquiteto` | Design de módulos e fronteiras |
+| `/gpt-draft` | Gera boilerplate PHP |
+| `/gemini-explore` | Lê vários arquivos em paralelo |
+| `/criar-teste` | Gera testes PHPUnit |
+| `/revisar-padrao` | Revisão pós-implementação |
+| `/cleancode` | Legibilidade e nomes |
+| `/dba` | Schema, índices e revisão de queries |
+| `/lgpd` | LGPD e dados sensíveis |
+| `/seguranca` | OWASP e hardening |
+| `/qa` | Estratégia de testes e edge cases |
+| `/uxdesign` | UI/UX para Bootstrap 5 + Vanilla JS |
+| `/novo-modulo` | Cria um módulo CRUD |
+| `/novo-projeto` | Inicializa um novo projeto |
+| `/analista-dados` | Relatórios e KPIs |
+| `/skill-creator` | Cria ou melhora skills |
 
 ## Default Stack / Stack Padrão
 
@@ -151,15 +170,28 @@ npx boaredev keys export >> ~/.bashrc && source ~/.bashrc
 
 ## Repository Structure / Estrutura do Repositório
 
+🇺🇸
 ```text
-protocol/          core rules / regras centrais
-padroes/           technical standards / padrões técnicos
-skills/            source of truth for skills / fonte de verdade das skills
-templates/         scaffolding templates / templates de scaffolding
-tools/             per-tool instruction templates / templates por tool
-project-template/  project context templates / templates de contexto do projeto
-bin/               CLI entrypoint / entrada do CLI
-installer/         install and update logic / lógica de instalação e atualização
+protocol/          core rules
+padroes/           technical standards
+skills/            source of truth for skills
+templates/         scaffolding templates
+tools/             per-tool instruction templates
+project-template/  project context templates
+bin/               CLI entrypoint
+installer/         install and update logic
+```
+
+🇧🇷
+```text
+protocol/          regras centrais
+padroes/           padrões técnicos
+skills/            fonte de verdade das skills
+templates/         templates de scaffolding
+tools/             templates por tool
+project-template/  templates de contexto do projeto
+bin/               entrada do CLI
+installer/         lógica de instalação e atualização
 ```
 
 ## GitHub Workflows
@@ -172,32 +204,3 @@ installer/         install and update logic / lógica de instalação e atualiza
 
 🇺🇸 If there is no workflow file there yet, nothing is running automatically.
 🇧🇷 Se ainda não existe arquivo de workflow ali, nada está rodando automaticamente.
-
-## npm Publish
-
-🇺🇸 BoareDev is already published on npm, so most users only need `npx boaredev install`.
-🇧🇷 O BoareDev já foi publicado no npm, então a maioria dos usuários só precisa de `npx boaredev install`.
-
-🇺🇸 Use the steps below only when you want to publish a new version.
-🇧🇷 Use os passos abaixo apenas quando quiser publicar uma nova versão.
-
-1. 🇺🇸 Update the version in `package.json`.
-   🇧🇷 Atualize a versão no `package.json`.
-2. 🇺🇸 Run `npm run pack:check`.
-   🇧🇷 Rode `npm run pack:check`.
-3. 🇺🇸 Run `npm run publish:dry-run`.
-   🇧🇷 Rode `npm run publish:dry-run`.
-4. 🇺🇸 Publish with `npm publish`.
-   🇧🇷 Publique com `npm publish`.
-
-```bash
-npm run pack:check
-npm run publish:dry-run
-npm publish
-```
-
-🇺🇸 If npm asks for a one-time password, use your npm 2FA code.
-🇧🇷 Se o npm pedir um código temporário, use o código 2FA da sua conta npm.
-
-🇺🇸 If npm says the version already exists, bump the version before publishing again.
-🇧🇷 Se o npm disser que a versão já existe, aumente a versão antes de publicar novamente.
