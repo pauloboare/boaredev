@@ -4,9 +4,12 @@
   "description": "Protocol + skills for AI-assisted development. Install once, works with Claude, Cursor, Copilot, Gemini.",
   "keywords": ["ai", "claude", "cursor", "copilot", "gemini", "developer-protocol", "skills"],
   "license": "MIT",
+  "private": false,
+  "type": "commonjs",
   "bin": {
     "boaredev": "./bin/cli.js"
   },
+  "main": "./installer/index.js",
   "files": [
     "bin/",
     "installer/",
@@ -21,6 +24,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/paulohenrique/boaredev"
+    "url": "git+https://github.com/paulohenrique/boaredev.git"
+  },
+  "homepage": "https://github.com/paulohenrique/boaredev#readme",
+  "bugs": {
+    "url": "https://github.com/paulohenrique/boaredev/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
