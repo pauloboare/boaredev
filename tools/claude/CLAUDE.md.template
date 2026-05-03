@@ -1,0 +1,67 @@
+# {{PROJECT_NAME}}
+
+> BoareDev v{{VERSION}} · {{DATE}}
+
+## Modo de Resposta
+- ≤25 palavras entre tool calls — sem narração interna, sem "vou fazer X"
+- ≤100 palavras por resposta (exceto quando a tarefa exigir mais)
+- Sem recap do que foi feito. Código fala por si.
+- Editar arquivo? **Ler antes**. Sempre.
+- Não adicionar features, refactoring ou abstrações além do pedido.
+
+## Stack
+{{STACK}}
+
+## Model Switching
+| Complexidade | Modelo | Exemplos | Custo |
+|---|---|---|---|
+| Simples | Haiku | 1 arquivo, CSS, rename, texto | ~$0.10 |
+| **Média** (padrão) | **Sonnet** | CRUD, funções, APIs, bugs, testes | ~$1.50 |
+| Alta | Opus | Arquitetura cross-módulo, debug complexo | ~$6-15 |
+
+## Contexto do Projeto
+Ler nesta ordem ao iniciar a sessão:
+1. `.boaredev/context/contexto-negocio.md`
+2. `.boaredev/context/entidades-dominio.md`
+3. `.boaredev/context/banco-dados.md`
+4. `.boaredev/context/controle-acesso.md`
+5. `.boaredev/context/decisoes-arquitetura.md`
+6. `.boaredev/context/lgpd-regras.md`
+
+## Skills Disponíveis (`.agents/skills/`)
+
+| Skill | Quando usar |
+|-------|------------|
+| `/modelo` | **Sempre primeiro** — classifica complexidade |
+| `/arquiteto` | Design de módulos, boundaries, camadas |
+| `/gpt-draft` | Gerar boilerplate PHP 50+ linhas (modelo externo) |
+| `/gemini-explore` | Ler 3+ arquivos em paralelo |
+| `/criar-teste` | Gerar PHPUnit |
+| `/revisar-padrao` | Revisão pós-implementação |
+| `/cleancode` | Legibilidade, naming, duplicação |
+| `/dba` | Schema, indexes, queries lentas |
+| `/lgpd` | Compliance, consentimento, dados sensíveis |
+| `/seguranca` | OWASP, sessão, hardening |
+| `/qa` | Estratégia de testes, edge cases |
+| `/uxdesign` | UI/UX Bootstrap 5 + Vanilla JS |
+| `/novo-modulo` | Scaffold CRUD completo |
+| `/novo-projeto` | Bootstrap novo projeto |
+| `/analista-dados` | Relatórios, KPIs, agregações |
+| `/skill-creator` | Criar/melhorar skills |
+
+## Providers Externos
+{{PROVIDERS_STATUS}}
+
+Adicionar chave: `npx boaredev keys set` · Ativar: `npx boaredev keys export >> ~/.bashrc`
+
+## Fluxo de Implementação
+1. `/modelo` → classificar complexidade
+2. `/arquiteto` se Alta
+3. `/gpt-draft` para boilerplate PHP 50+ linhas
+4. TDD: Red → Green → Refactor (obrigatório em regras de negócio)
+5. `/revisar-padrao` + `/cleancode` + `/dba` pós-implementação
+
+## Git
+Branches: `main` (produção) · `dev` (trabalho diário) · `feature/` · `fix/` · `chore/`
+Commits: `feat(scope): desc` · `fix(scope): desc` · `chore(scope): desc`
+Sem force-push em `main`. Merge via PR.

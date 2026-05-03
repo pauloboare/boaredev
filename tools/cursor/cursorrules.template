@@ -1,0 +1,42 @@
+# BoareDev — {{PROJECT_NAME}}
+
+## Stack
+{{STACK}}
+
+## Regras de Resposta
+- Respostas curtas e diretas
+- Não adicionar features além do pedido
+- Ler arquivo antes de editar
+- Sem comentários óbvios no código — apenas o WHY quando não é óbvio
+
+## Contexto do Projeto
+Arquivos em `.boaredev/context/` descrevem o projeto:
+- `contexto-negocio.md` — domínio e regras de negócio
+- `entidades-dominio.md` — modelo DDD (entities, aggregates, value objects)
+- `banco-dados.md` — schema MySQL, exceptions ao soft-delete
+- `controle-acesso.md` — matriz de permissões por perfil
+- `decisoes-arquitetura.md` — decisões e motivos
+- `lgpd-regras.md` — criptografia, consentimento, anonimização
+
+## Skills (`.agents/skills/`)
+Mencionar o nome da skill para ativar o especialista:
+- `arquiteto` — design de módulos, boundaries, camadas
+- `dba` — schema, indexes, queries lentas, migrations
+- `cleancode` — legibilidade, naming, duplicação
+- `lgpd` — compliance, dados sensíveis
+- `seguranca` — OWASP, sessão, hardening
+- `qa` — estratégia de testes, edge cases
+- `uxdesign` — UI/UX Bootstrap 5 + Vanilla JS
+- `criar-teste` — gerar PHPUnit
+- `revisar-padrao` — revisão pós-implementação
+- `novo-modulo` — scaffold CRUD completo
+- `analista-dados` — relatórios, KPIs
+
+## Model Switching
+- Simples (1 arquivo, CSS, rename): modelo menor
+- Média (CRUD, APIs, bugs): modelo padrão ← usar por default
+- Alta (arquitetura, debug cross-módulo): modelo maior
+
+## Git
+`main` (produção) · `dev` (trabalho) · `feature/` · `fix/` · `chore/`
+Commits convencionais: `feat(scope): desc` · `fix(scope): desc`

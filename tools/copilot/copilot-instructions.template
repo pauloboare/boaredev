@@ -1,0 +1,40 @@
+# BoareDev — {{PROJECT_NAME}}
+
+## Stack
+{{STACK}}
+
+## Comportamento
+- Respostas curtas e diretas
+- Não adicionar features além do pedido
+- Ler arquivo antes de sugerir edição
+- Sem comentários que explicam o óbvio
+
+## Contexto do Projeto
+Consultar os arquivos em `.boaredev/context/`:
+- `contexto-negocio.md` — domínio e regras de negócio
+- `entidades-dominio.md` — modelo DDD
+- `banco-dados.md` — schema MySQL
+- `controle-acesso.md` — permissões por perfil
+- `decisoes-arquitetura.md` — decisões arquiteturais e motivos
+- `lgpd-regras.md` — LGPD, criptografia, consentimento
+
+## Skills Disponíveis (`.agents/skills/`)
+Ao mencionar uma skill, aplicar seu conteúdo como guia especialista:
+
+| Skill | Especialidade |
+|-------|--------------|
+| arquiteto | Design de módulos, boundaries, camadas |
+| dba | Schema, indexes, queries lentas |
+| cleancode | Legibilidade, naming, duplicação |
+| lgpd | Compliance, dados sensíveis |
+| seguranca | OWASP, sessão, hardening |
+| qa | Estratégia de testes, edge cases |
+| uxdesign | UI/UX Bootstrap 5 + Vanilla JS |
+| criar-teste | Gerar PHPUnit |
+| revisar-padrao | Revisão pós-implementação |
+| novo-modulo | Scaffold CRUD completo |
+| analista-dados | Relatórios, KPIs, agregações |
+
+## Git
+Branches: `main` · `dev` · `feature/` · `fix/` · `chore/`
+Commits: `feat(scope): desc` · `fix(scope): desc` · `chore(scope): desc`

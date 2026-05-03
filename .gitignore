@@ -1,0 +1,17 @@
+# Obsidian (not committed — open folder as Obsidian vault locally if you want)
+.obsidian/
+
+# BoareDev user-local config (never commit)
+*.user.toml
+.boaredev/state.json
+
+# Node
+node_modules/
+*.tgz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
