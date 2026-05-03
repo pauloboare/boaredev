@@ -28,7 +28,7 @@ Ler nesta ordem ao iniciar a sessão:
 5. `.boaredev/context/decisoes-arquitetura.md`
 6. `.boaredev/context/lgpd-regras.md`
 
-## Skills Disponíveis (`.agents/skills/`)
+## Skills Disponíveis (`.claude/skills/`)
 
 | Skill | Quando usar |
 |-------|------------|

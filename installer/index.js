@@ -30,6 +30,22 @@ function copyFile(src, dest) {
   return true;
 }
 
+function copyDirRecursive(srcDir, destDir, overwrite = false) {
+  if (!exists(srcDir)) return;
+  mkdirp(destDir);
+  for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
+    const src = path.join(srcDir, entry.name);
+    const dest = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      copyDirRecursive(src, dest, overwrite);
+      continue;
+    }
+    if (!overwrite && exists(dest)) continue;
+    mkdirp(path.dirname(dest));
+    fs.copyFileSync(src, dest);
+  }
+}
+
 function renderTemplate(src, vars) {
   let content = fs.readFileSync(src, 'utf8');
   for (const [k, v] of Object.entries(vars)) {
@@ -67,7 +83,7 @@ function detectTools() {
 
 // ── skills copy ───────────────────────────────────────────────────────────────
 
-function copySkills(targetDir) {
+function copySkillsAsDirectories(targetDir, overwrite = false) {
   const skillsRoot = path.join(ROOT, 'skills');
   if (!exists(skillsRoot)) return [];
 
@@ -76,11 +92,14 @@ function copySkills(targetDir) {
 
   for (const entry of fs.readdirSync(skillsRoot, { withFileTypes: true })) {
     if (!entry.isDirectory()) continue;
-    const src  = path.join(skillsRoot, entry.name, 'SKILL.md');
-    const dest = path.join(targetDir, `${entry.name}.md`);
-    if (exists(src) && copyFile(src, dest)) {
-      copied.push(entry.name);
-    }
+    const srcDir = path.join(skillsRoot, entry.name);
+    const destDir = path.join(targetDir, entry.name);
+    const entrypoint = path.join(srcDir, 'SKILL.md');
+    if (!exists(entrypoint)) continue;
+
+    const existed = exists(destDir);
+    copyDirRecursive(srcDir, destDir, overwrite);
+    if (!existed || overwrite) copied.push(entry.name);
   }
   return copied;
 }
@@ -193,23 +212,26 @@ async function install() {
 
   const boaredevDir = path.join(CWD, '.boaredev');
   const contextDir  = path.join(boaredevDir, 'context');
-  const skillsDir   = path.join(CWD, '.agents', 'skills');
+  const claudeSkillsDir = path.join(CWD, '.claude', 'skills');
+  const sharedSkillsDir = path.join(CWD, '.agents', 'skills');
 
   writeConfig(boaredevDir, vars, tools);
   scaffoldContext(contextDir);
 
-  const copied = copySkills(skillsDir);
-  if (copied.length) {
-    log(`  ✓  .agents/skills/ (${copied.length} skills)`);
-  }
+  const claudeCopied = copySkillsAsDirectories(claudeSkillsDir);
+  if (claudeCopied.length) log(`  ✓  .claude/skills/ (${claudeCopied.length} skills)`);
+
+  const sharedCopied = copySkillsAsDirectories(sharedSkillsDir);
+  if (sharedCopied.length) log(`  ✓  .agents/skills/ (${sharedCopied.length} skills)`);
 
   generateToolConfigs(tools, vars);
 
   log('\nPróximos passos:');
   log(`  1. Preencha os arquivos em .boaredev/context/`);
   log(`  2. Se já tinha CLAUDE.md, mescle com CLAUDE.md.boaredev`);
-  log(`  3. Commite: git add .boaredev .agents CLAUDE.md .cursorrules`);
-  log(`  4. Pronto — /arquiteto, /dba e outras skills já funcionam`);
+  log(`  3. Reinicie o Claude Code/VS Code se a pasta .claude/skills/ foi criada agora`);
+  log(`  4. Commite: git add .boaredev .claude .agents CLAUDE.md .cursorrules`);
+  log(`  5. Pronto — digite / para ver /arquiteto, /dba e outras skills`);
 
   const storedKeys  = loadKeys();
   const missingKeys = PROVIDERS.filter(p => p.skills.length && !storedKeys[p.id] && !process.env[p.envVar]);
@@ -229,24 +251,24 @@ async function install() {
 async function update() {
   log(`\nBoareDev v${PKG.version} — atualizando skills\n`);
 
-  const skillsDir = path.join(CWD, '.agents', 'skills');
-  if (!exists(skillsDir)) {
-    log('Pasta .agents/skills/ não encontrada. Rode boaredev install primeiro.');
+  const claudeSkillsDir = path.join(CWD, '.claude', 'skills');
+  const sharedSkillsDir = path.join(CWD, '.agents', 'skills');
+  if (!exists(claudeSkillsDir) && !exists(sharedSkillsDir)) {
+    log('Pastas .claude/skills/ e .agents/skills/ não encontradas. Rode boaredev install primeiro.');
     return;
   }
 
-  const skillsRoot = path.join(ROOT, 'skills');
   let count = 0;
-  for (const entry of fs.readdirSync(skillsRoot, { withFileTypes: true })) {
-    if (!entry.isDirectory()) continue;
-    const src  = path.join(skillsRoot, entry.name, 'SKILL.md');
-    const dest = path.join(skillsDir, `${entry.name}.md`);
-    if (exists(src)) {
-      fs.copyFileSync(src, dest);
-      count++;
-    }
+  if (exists(claudeSkillsDir)) {
+    count = copySkillsAsDirectories(claudeSkillsDir, true).length;
+    log(`  ✓  ${count} skills atualizadas em .claude/skills/`);
   }
-  log(`  ✓  ${count} skills atualizadas em .agents/skills/\n`);
+  if (exists(sharedSkillsDir)) {
+    const sharedCount = copySkillsAsDirectories(sharedSkillsDir, true).length;
+    log(`  ✓  ${sharedCount} skills atualizadas em .agents/skills/`);
+    count = Math.max(count, sharedCount);
+  }
+  log('');
 }
 
 // ── add-tool ──────────────────────────────────────────────────────────────────

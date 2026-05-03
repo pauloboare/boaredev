@@ -6,6 +6,10 @@
   "license": "MIT",
   "private": false,
   "type": "commonjs",
+  "scripts": {
+    "pack:check": "npm pack --json",
+    "publish:dry-run": "npm publish --dry-run"
+  },
   "bin": {
     "boaredev": "./bin/cli.js"
   },
@@ -24,11 +28,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paulohenrique/boaredev.git"
+    "url": "git+https://github.com/pauloboare/boaredev.git"
   },
-  "homepage": "https://github.com/paulohenrique/boaredev#readme",
+  "homepage": "https://github.com/pauloboare/boaredev#readme",
   "bugs": {
-    "url": "https://github.com/paulohenrique/boaredev/issues"
+    "url": "https://github.com/pauloboare/boaredev/issues"
   },
   "publishConfig": {
     "access": "public"

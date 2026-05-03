@@ -20,7 +20,7 @@ Ler ao iniciar a sessão:
 5. `.boaredev/context/decisoes-arquitetura.md`
 6. `.boaredev/context/lgpd-regras.md`
 
-## Skills (`.agents/skills/`)
+## Skills (`.claude/skills/`)
 Ao mencionar uma skill, ler o arquivo correspondente e aplicar como guia:
 
 | Skill | Quando usar |

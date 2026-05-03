@@ -18,7 +18,7 @@ Arquivos em `.boaredev/context/` descrevem o projeto:
 - `decisoes-arquitetura.md` — decisões e motivos
 - `lgpd-regras.md` — criptografia, consentimento, anonimização
 
-## Skills (`.agents/skills/`)
+## Skills (`.claude/skills/` espelhado de `./skills/`)
 Mencionar o nome da skill para ativar o especialista:
 - `arquiteto` — design de módulos, boundaries, camadas
 - `dba` — schema, indexes, queries lentas, migrations

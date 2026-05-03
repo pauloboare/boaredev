@@ -1,174 +1,60 @@
 # BoareDev
 
-Protocol + skills for AI-assisted development. Install once, use across Claude Code, Cursor, GitHub Copilot, and Gemini CLI.
+Protocol + skills for AI-assisted development.
+Protocolo + skills para desenvolvimento assistido por IA.
 
-Protocolo + skills para desenvolvimento assistido por IA. Instale uma vez e use com Claude Code, Cursor, GitHub Copilot e Gemini CLI.
+Install once and reuse across Claude Code, Cursor, GitHub Copilot, and Gemini CLI.
+Instale uma vez e reutilize com Claude Code, Cursor, GitHub Copilot e Gemini CLI.
 
-## English
+## Install / Instalação
 
-### Install
-
-If the package is not yet published on npm, install directly from GitHub:
-
-```bash
-npx github:paulohenrique/boaredev install
-```
-
-Alternative:
+If the package is not yet published on npm, install directly from GitHub.
+Se o pacote ainda não estiver publicado no npm, instale direto do GitHub.
 
 ```bash
-npm exec --yes --package=github:paulohenrique/boaredev boaredev install
+npx github:pauloboare/boaredev install
 ```
 
-If the package is published on npm, this also works:
+Alternative command using `npm exec`.
+Comando alternativo usando `npm exec`.
+
+```bash
+npm exec --yes --package=github:pauloboare/boaredev boaredev install
+```
+
+If the package is published on npm, the short command will work.
+Se o pacote for publicado no npm, o comando curto vai funcionar.
 
 ```bash
 npx boaredev install
 ```
 
-Update and extra commands:
+## Common commands / Comandos comuns
+
+Use these commands when installing from GitHub.
+Use estes comandos quando estiver instalando pelo GitHub.
 
 ```bash
-npx github:paulohenrique/boaredev update
-npx github:paulohenrique/boaredev add-tool
-npx github:paulohenrique/boaredev keys
+npx github:pauloboare/boaredev install
+npx github:pauloboare/boaredev update
+npx github:pauloboare/boaredev add-tool
+npx github:pauloboare/boaredev keys
+npx github:pauloboare/boaredev keys set
+npx github:pauloboare/boaredev keys set gemini
+npx github:pauloboare/boaredev keys remove gemini
+npx github:pauloboare/boaredev keys export
 ```
 
-### What it generates
+## What it creates / O que ele cria
+
+BoareDev keeps the project context inside your own repository.
+O BoareDev mantém o contexto do projeto dentro do seu próprio repositório.
+
+It installs Claude Code skills in the folder Claude actually reads.
+Ele instala as skills do Claude Code na pasta que o Claude realmente lê.
 
 ```text
 your-project/
-  .boaredev/context/
-    contexto-negocio.md
-    entidades-dominio.md
-    banco-dados.md
-    controle-acesso.md
-    decisoes-arquitetura.md
-    lgpd-regras.md
-  .agents/skills/
-  CLAUDE.md
-  .cursorrules
-  .github/copilot-instructions.md
-  GEMINI.md
-```
-
-Project context stays inside your project. BoareDev only installs the protocol, tool instructions, and specialist skills.
-
-### Commands
-
-```bash
-npx github:paulohenrique/boaredev install
-npx github:paulohenrique/boaredev update
-npx github:paulohenrique/boaredev add-tool
-npx github:paulohenrique/boaredev keys
-npx github:paulohenrique/boaredev keys set
-npx github:paulohenrique/boaredev keys set gemini
-npx github:paulohenrique/boaredev keys remove gemini
-npx github:paulohenrique/boaredev keys export
-```
-
-### API keys
-
-Some skills call external providers. Keys are stored globally in `~/.boaredev/keys.json` and should never be committed.
-
-Supported providers:
-
-| Provider | Env Var | Skills |
-|----------|---------|--------|
-| `gemini` | `GEMINI_API_KEY` | `/gemini-explore` |
-| `openrouter` | `OPENROUTER_API_KEY` | `/gpt-draft` |
-| `github` | `GITHUB_TOKEN` | — |
-
-Shell activation example:
-
-```bash
-npx github:paulohenrique/boaredev keys export >> ~/.bashrc && source ~/.bashrc
-```
-
-### Skills
-
-16 specialists are installed into `.agents/skills/`:
-
-| Skill | Purpose |
-|-------|---------|
-| `/modelo` | Classify complexity and recommend the right model tier |
-| `/arquiteto` | Module design, boundaries, layers |
-| `/gpt-draft` | Generate PHP boilerplate with an external model |
-| `/gemini-explore` | Read multiple files in parallel with Gemini |
-| `/criar-teste` | Generate PHPUnit tests |
-| `/revisar-padrao` | Post-implementation review |
-| `/cleancode` | Readability, naming, duplication |
-| `/dba` | Schema, indexes, query review |
-| `/lgpd` | LGPD compliance, sensitive data |
-| `/seguranca` | OWASP, hardening, session risks |
-| `/qa` | Test strategy and edge cases |
-| `/uxdesign` | UI/UX for Bootstrap 5 + Vanilla JS |
-| `/novo-modulo` | Scaffold a full CRUD module |
-| `/novo-projeto` | Bootstrap a new project |
-| `/analista-dados` | Reports, KPIs, aggregations |
-| `/skill-creator` | Create or improve skills |
-
-### Default stack
-
-`PHP procedural/DDD · PDO MySQL · Bootstrap 5 · Vanilla JS ES6+`
-
-You can override this during install.
-
-### Repository structure
-
-```text
-protocol/          core rules
-padroes/           technical standards
-skills/            source of truth for skills
-templates/         scaffolding templates
-tools/             per-tool instruction templates
-project-template/  empty context files copied into projects
-bin/               CLI entrypoint
-installer/         install/update logic
-```
-
-### Publish to npm
-
-If you want `npx boaredev install` to work by package name, publish this repository to npm:
-
-```bash
-npm login
-npm publish
-```
-
-## Português
-
-### Instalação
-
-Se o pacote ainda não estiver publicado no npm, instale direto do GitHub:
-
-```bash
-npx github:paulohenrique/boaredev install
-```
-
-Alternativa equivalente:
-
-```bash
-npm exec --yes --package=github:paulohenrique/boaredev boaredev install
-```
-
-Se o pacote estiver publicado no npm, este comando também funciona:
-
-```bash
-npx boaredev install
-```
-
-Atualização e comandos extras:
-
-```bash
-npx github:paulohenrique/boaredev update
-npx github:paulohenrique/boaredev add-tool
-npx github:paulohenrique/boaredev keys
-```
-
-### O que ele gera
-
-```text
 seu-projeto/
   .boaredev/context/
     contexto-negocio.md
@@ -177,6 +63,7 @@ seu-projeto/
     controle-acesso.md
     decisoes-arquitetura.md
     lgpd-regras.md
+  .claude/skills/
   .agents/skills/
   CLAUDE.md
   .cursorrules
@@ -184,26 +71,33 @@ seu-projeto/
   GEMINI.md
 ```
 
-O contexto do projeto fica dentro do próprio projeto. O BoareDev só instala o protocolo, as instruções das tools e as skills especializadas.
+`.claude/skills/` is for Claude Code slash commands and skill discovery.
+`.claude/skills/` é para slash commands e descoberta de skills no Claude Code.
 
-### Comandos
+`.agents/skills/` is kept as a compatibility mirror.
+`.agents/skills/` é mantido como espelho por compatibilidade.
 
-```bash
-npx github:paulohenrique/boaredev install
-npx github:paulohenrique/boaredev update
-npx github:paulohenrique/boaredev add-tool
-npx github:paulohenrique/boaredev keys
-npx github:paulohenrique/boaredev keys set
-npx github:paulohenrique/boaredev keys set gemini
-npx github:paulohenrique/boaredev keys remove gemini
-npx github:paulohenrique/boaredev keys export
-```
+## Claude Code
 
-### Chaves de API
+After installation, open Claude Code in VS Code and type `/`.
+Depois da instalação, abra o Claude Code no VS Code e digite `/`.
 
-Algumas skills chamam provedores externos. As chaves ficam em `~/.boaredev/keys.json` e nunca devem ser versionadas.
+You should see commands such as `/arquiteto`, `/dba`, `/qa`, and others.
+Você deve ver comandos como `/arquiteto`, `/dba`, `/qa` e outros.
 
-Provedores suportados:
+If `.claude/skills/` was created for the first time, restart the Claude Code session.
+Se `.claude/skills/` foi criada pela primeira vez, reinicie a sessão do Claude Code.
+
+## API keys / Chaves de API
+
+Some skills use external providers.
+Algumas skills usam provedores externos.
+
+Keys are stored in `~/.boaredev/keys.json` and should never be committed.
+As chaves ficam em `~/.boaredev/keys.json` e nunca devem ser versionadas.
+
+Supported providers.
+Provedores suportados.
 
 | Provider | Env Var | Skills |
 |----------|---------|--------|
@@ -211,59 +105,102 @@ Provedores suportados:
 | `openrouter` | `OPENROUTER_API_KEY` | `/gpt-draft` |
 | `github` | `GITHUB_TOKEN` | — |
 
-Exemplo para ativar no shell:
+Example to export keys into your shell.
+Exemplo para exportar as chaves para o seu shell.
 
 ```bash
-npx github:paulohenrique/boaredev keys export >> ~/.bashrc && source ~/.bashrc
+npx github:pauloboare/boaredev keys export >> ~/.bashrc && source ~/.bashrc
 ```
 
-### Skills
+## Skills
 
-16 especialistas são instalados em `.agents/skills/`:
+BoareDev ships 16 specialist skills.
+O BoareDev entrega 16 skills especialistas.
 
-| Skill | Função |
-|-------|--------|
-| `/modelo` | Classifica a complexidade e recomenda a faixa de modelo |
-| `/arquiteto` | Design de módulos, fronteiras e camadas |
-| `/gpt-draft` | Gera boilerplate PHP com modelo externo |
-| `/gemini-explore` | Lê vários arquivos em paralelo com Gemini |
-| `/criar-teste` | Gera testes PHPUnit |
-| `/revisar-padrao` | Revisão pós-implementação |
-| `/cleancode` | Legibilidade, nomes e duplicação |
-| `/dba` | Schema, índices e revisão de queries |
-| `/lgpd` | LGPD e dados sensíveis |
-| `/seguranca` | OWASP, hardening e sessões |
-| `/qa` | Estratégia de testes e edge cases |
-| `/uxdesign` | UI/UX para Bootstrap 5 + Vanilla JS |
-| `/novo-modulo` | Cria um módulo CRUD completo |
-| `/novo-projeto` | Inicializa um novo projeto |
-| `/analista-dados` | Relatórios, KPIs e agregações |
-| `/skill-creator` | Cria ou melhora skills |
+| Skill | Purpose / Função |
+|-------|-------------------|
+| `/modelo` | Classify complexity and recommend model tier / Classifica a complexidade e recomenda a faixa de modelo |
+| `/arquiteto` | Module design and boundaries / Design de módulos e fronteiras |
+| `/gpt-draft` | Generate PHP boilerplate / Gera boilerplate PHP |
+| `/gemini-explore` | Read multiple files in parallel / Lê vários arquivos em paralelo |
+| `/criar-teste` | Generate PHPUnit tests / Gera testes PHPUnit |
+| `/revisar-padrao` | Post-implementation review / Revisão pós-implementação |
+| `/cleancode` | Readability and naming / Legibilidade e nomes |
+| `/dba` | Schema, indexes, and query review / Schema, índices e revisão de queries |
+| `/lgpd` | LGPD and sensitive data / LGPD e dados sensíveis |
+| `/seguranca` | OWASP and hardening / OWASP e hardening |
+| `/qa` | Test strategy and edge cases / Estratégia de testes e edge cases |
+| `/uxdesign` | UI/UX for Bootstrap 5 + Vanilla JS / UI/UX para Bootstrap 5 + Vanilla JS |
+| `/novo-modulo` | Scaffold a CRUD module / Cria um módulo CRUD |
+| `/novo-projeto` | Bootstrap a new project / Inicializa um novo projeto |
+| `/analista-dados` | Reports and KPIs / Relatórios e KPIs |
+| `/skill-creator` | Create or improve skills / Cria ou melhora skills |
 
-### Stack padrão
+## Default stack / Stack padrão
 
 `PHP procedural/DDD · PDO MySQL · Bootstrap 5 · Vanilla JS ES6+`
 
-Você pode sobrescrever isso durante a instalação.
+You can override the stack during install.
+Você pode alterar a stack durante a instalação.
 
-### Estrutura do repositório
+## Repository structure / Estrutura do repositório
 
 ```text
-protocol/          regras centrais
-padroes/           padrões técnicos
-skills/            fonte de verdade das skills
-templates/         templates de scaffolding
-tools/             templates de instruções por tool
-project-template/  arquivos vazios de contexto copiados para os projetos
-bin/               entrypoint do CLI
-installer/         lógica de instalação/atualização
+protocol/          core rules / regras centrais
+padroes/           technical standards / padrões técnicos
+skills/            source of truth for skills / fonte de verdade das skills
+templates/         scaffolding templates / templates de scaffolding
+tools/             per-tool instruction templates / templates por tool
+project-template/  project context templates / templates de contexto do projeto
+bin/               CLI entrypoint / entrada do CLI
+installer/         install and update logic / lógica de instalação e atualização
 ```
 
-### Publicar no npm
+## GitHub workflows
 
-Se você quiser que `npx boaredev install` funcione pelo nome do pacote, publique este repositório no npm:
+`.github/workflows/` is the GitHub Actions folder.
+`.github/workflows/` é a pasta do GitHub Actions.
+
+It is used for automation such as tests, lint, release, and npm publish.
+Ela é usada para automações como testes, lint, release e publicação no npm.
+
+If there is no workflow file there yet, nothing is running automatically.
+Se ainda não existe arquivo de workflow ali, nada está rodando automaticamente.
+
+## Publish to npm / Publicar no npm
+
+Publishing to npm means making `boaredev` available in the npm registry.
+Publicar no npm significa disponibilizar `boaredev` no registro do npm.
+
+After that, `npx boaredev install` works by package name.
+Depois disso, `npx boaredev install` funciona pelo nome do pacote.
+
+First time checklist.
+Checklist da primeira publicação.
+
+1. Create an account on [npmjs.com](https://www.npmjs.com/).
+1. Crie uma conta em [npmjs.com](https://www.npmjs.com/).
+2. In the terminal, run `npm login`.
+2. No terminal, rode `npm login`.
+3. Validate the package with `npm run pack:check`.
+3. Valide o pacote com `npm run pack:check`.
+4. Simulate the publish with `npm run publish:dry-run`.
+4. Simule a publicação com `npm run publish:dry-run`.
+5. Publish for real with `npm publish`.
+5. Publique de verdade com `npm publish`.
+
+Commands.
+Comandos.
 
 ```bash
 npm login
+npm run pack:check
+npm run publish:dry-run
 npm publish
 ```
+
+If npm says you are not logged in, run `npm login` again.
+Se o npm disser que você não está logado, rode `npm login` novamente.
+
+If npm says the package name is unavailable, you will need a different package name.
+Se o npm disser que o nome do pacote não está disponível, você vai precisar de outro nome de pacote.

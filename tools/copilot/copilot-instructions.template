@@ -18,7 +18,7 @@ Consultar os arquivos em `.boaredev/context/`:
 - `decisoes-arquitetura.md` — decisões arquiteturais e motivos
 - `lgpd-regras.md` — LGPD, criptografia, consentimento
 
-## Skills Disponíveis (`.agents/skills/`)
+## Skills Disponíveis (`.claude/skills/` espelhado de `./skills/`)
 Ao mencionar uma skill, aplicar seu conteúdo como guia especialista:
 
 | Skill | Especialidade |
