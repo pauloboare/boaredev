@@ -1,61 +1,67 @@
 # BoareDev
 
-Protocol + skills for AI-assisted development.
-Protocolo + skills para desenvolvimento assistido por IA.
+🇺🇸 Protocol + skills for AI-assisted development.
+🇧🇷 Protocolo + skills para desenvolvimento assistido por IA.
 
-Install once and reuse across Claude Code, Cursor, GitHub Copilot, and Gemini CLI.
-Instale uma vez e reutilize com Claude Code, Cursor, GitHub Copilot e Gemini CLI.
+🇺🇸 Install once and reuse across Claude Code, Cursor, GitHub Copilot, and Gemini CLI.
+🇧🇷 Instale uma vez e reutilize com Claude Code, Cursor, GitHub Copilot e Gemini CLI.
 
 ## Install / Instalação
 
-If the package is not yet published on npm, install directly from GitHub.
-Se o pacote ainda não estiver publicado no npm, instale direto do GitHub.
-
-```bash
-npx github:pauloboare/boaredev install
-```
-
-Alternative command using `npm exec`.
-Comando alternativo usando `npm exec`.
-
-```bash
-npm exec --yes --package=github:pauloboare/boaredev boaredev install
-```
-
-If the package is published on npm, the short command will work.
-Se o pacote for publicado no npm, o comando curto vai funcionar.
+🇺🇸 Install from npm with the short command.
+🇧🇷 Instale pelo npm com o comando curto.
 
 ```bash
 npx boaredev install
 ```
 
-## Common commands / Comandos comuns
+🇺🇸 Update BoareDev inside an existing project.
+🇧🇷 Atualize o BoareDev dentro de um projeto existente.
 
-Use these commands when installing from GitHub.
-Use estes comandos quando estiver instalando pelo GitHub.
+```bash
+npx boaredev update
+```
+
+🇺🇸 Add instructions for another supported tool.
+🇧🇷 Adicione instruções para outra tool suportada.
+
+```bash
+npx boaredev add-tool
+```
+
+🇺🇸 If npm is temporarily unavailable, GitHub install is the fallback.
+🇧🇷 Se o npm estiver temporariamente indisponível, a instalação pelo GitHub é o fallback.
 
 ```bash
 npx github:pauloboare/boaredev install
-npx github:pauloboare/boaredev update
-npx github:pauloboare/boaredev add-tool
-npx github:pauloboare/boaredev keys
-npx github:pauloboare/boaredev keys set
-npx github:pauloboare/boaredev keys set gemini
-npx github:pauloboare/boaredev keys remove gemini
-npx github:pauloboare/boaredev keys export
 ```
 
-## What it creates / O que ele cria
+## Common Commands / Comandos Comuns
 
-BoareDev keeps the project context inside your own repository.
-O BoareDev mantém o contexto do projeto dentro do seu próprio repositório.
+🇺🇸 Main commands after the package is published on npm.
+🇧🇷 Comandos principais depois que o pacote foi publicado no npm.
 
-It installs Claude Code skills in the folder Claude actually reads.
-Ele instala as skills do Claude Code na pasta que o Claude realmente lê.
+```bash
+npx boaredev install
+npx boaredev update
+npx boaredev add-tool
+npx boaredev keys
+npx boaredev keys set
+npx boaredev keys set gemini
+npx boaredev keys remove gemini
+npx boaredev keys export
+```
+
+## What It Creates / O Que Ele Cria
+
+🇺🇸 BoareDev keeps the project context inside your own repository.
+🇧🇷 O BoareDev mantém o contexto do projeto dentro do seu próprio repositório.
+
+🇺🇸 It installs Claude Code skills in the folder Claude actually reads.
+🇧🇷 Ele instala as skills do Claude Code na pasta que o Claude realmente lê.
 
 ```text
 your-project/
-seu-projeto/
   .boaredev/context/
     contexto-negocio.md
     entidades-dominio.md
@@ -71,33 +77,33 @@ seu-projeto/
   GEMINI.md
 ```
 
-`.claude/skills/` is for Claude Code slash commands and skill discovery.
-`.claude/skills/` é para slash commands e descoberta de skills no Claude Code.
+🇺🇸 `.claude/skills/` is used for Claude Code slash commands and skill discovery.
+🇧🇷 `.claude/skills/` é usada para slash commands e descoberta de skills no Claude Code.
 
-`.agents/skills/` is kept as a compatibility mirror.
-`.agents/skills/` é mantido como espelho por compatibilidade.
+🇺🇸 `.agents/skills/` is kept as a compatibility mirror.
+🇧🇷 `.agents/skills/` é mantida como espelho por compatibilidade.
 
 ## Claude Code
 
-After installation, open Claude Code in VS Code and type `/`.
-Depois da instalação, abra o Claude Code no VS Code e digite `/`.
+🇺🇸 After installation, open Claude Code in VS Code and type `/`.
+🇧🇷 Depois da instalação, abra o Claude Code no VS Code e digite `/`.
 
-You should see commands such as `/arquiteto`, `/dba`, `/qa`, and others.
-Você deve ver comandos como `/arquiteto`, `/dba`, `/qa` e outros.
+🇺🇸 You should see commands such as `/arquiteto`, `/dba`, `/qa`, and others.
+🇧🇷 Você deve ver comandos como `/arquiteto`, `/dba`, `/qa` e outros.
 
-If `.claude/skills/` was created for the first time, restart the Claude Code session.
-Se `.claude/skills/` foi criada pela primeira vez, reinicie a sessão do Claude Code.
+🇺🇸 If `.claude/skills/` was created for the first time, restart the Claude Code session.
+🇧🇷 Se `.claude/skills/` foi criada pela primeira vez, reinicie a sessão do Claude Code.
 
-## API keys / Chaves de API
+## API Keys / Chaves de API
 
-Some skills use external providers.
-Algumas skills usam provedores externos.
+🇺🇸 Some skills use external providers.
+🇧🇷 Algumas skills usam provedores externos.
 
-Keys are stored in `~/.boaredev/keys.json` and should never be committed.
-As chaves ficam em `~/.boaredev/keys.json` e nunca devem ser versionadas.
+🇺🇸 Keys are stored in `~/.boaredev/keys.json` and should never be committed.
+🇧🇷 As chaves ficam em `~/.boaredev/keys.json` e nunca devem ser versionadas.
 
-Supported providers.
-Provedores suportados.
+🇺🇸 Supported providers.
+🇧🇷 Provedores suportados.
 
 | Provider | Env Var | Skills |
 |----------|---------|--------|
@@ -105,17 +111,17 @@ Provedores suportados.
 | `openrouter` | `OPENROUTER_API_KEY` | `/gpt-draft` |
 | `github` | `GITHUB_TOKEN` | — |
 
-Example to export keys into your shell.
-Exemplo para exportar as chaves para o seu shell.
+🇺🇸 Example to export keys into your shell.
+🇧🇷 Exemplo para exportar as chaves para o seu shell.
 
 ```bash
-npx github:pauloboare/boaredev keys export >> ~/.bashrc && source ~/.bashrc
+npx boaredev keys export >> ~/.bashrc && source ~/.bashrc
 ```
 
 ## Skills
 
-BoareDev ships 16 specialist skills.
-O BoareDev entrega 16 skills especialistas.
+🇺🇸 BoareDev ships 16 specialist skills.
+🇧🇷 O BoareDev entrega 16 skills especialistas.
 
 | Skill | Purpose / Função |
 |-------|-------------------|
@@ -136,14 +142,14 @@ O BoareDev entrega 16 skills especialistas.
 | `/analista-dados` | Reports and KPIs / Relatórios e KPIs |
 | `/skill-creator` | Create or improve skills / Cria ou melhora skills |
 
-## Default stack / Stack padrão
+## Default Stack / Stack Padrão
 
 `PHP procedural/DDD · PDO MySQL · Bootstrap 5 · Vanilla JS ES6+`
 
-You can override the stack during install.
-Você pode alterar a stack durante a instalação.
+🇺🇸 You can override the stack during install.
+🇧🇷 Você pode alterar a stack durante a instalação.
 
-## Repository structure / Estrutura do repositório
+## Repository Structure / Estrutura do Repositório
 
 ```text
 protocol/          core rules / regras centrais
@@ -156,51 +162,42 @@ bin/               CLI entrypoint / entrada do CLI
 installer/         install and update logic / lógica de instalação e atualização
 ```
 
-## GitHub workflows
+## GitHub Workflows
 
-`.github/workflows/` is the GitHub Actions folder.
-`.github/workflows/` é a pasta do GitHub Actions.
+🇺🇸 `.github/workflows/` is the GitHub Actions folder.
+🇧🇷 `.github/workflows/` é a pasta do GitHub Actions.
 
-It is used for automation such as tests, lint, release, and npm publish.
-Ela é usada para automações como testes, lint, release e publicação no npm.
+🇺🇸 It is used for automation such as tests, lint, release, and npm publish.
+🇧🇷 Ela é usada para automações como testes, lint, release e publicação no npm.
 
-If there is no workflow file there yet, nothing is running automatically.
-Se ainda não existe arquivo de workflow ali, nada está rodando automaticamente.
+🇺🇸 If there is no workflow file there yet, nothing is running automatically.
+🇧🇷 Se ainda não existe arquivo de workflow ali, nada está rodando automaticamente.
 
-## Publish to npm / Publicar no npm
+## npm Publish
 
-Publishing to npm means making `boaredev` available in the npm registry.
-Publicar no npm significa disponibilizar `boaredev` no registro do npm.
+🇺🇸 BoareDev is already published on npm, so most users only need `npx boaredev install`.
+🇧🇷 O BoareDev já foi publicado no npm, então a maioria dos usuários só precisa de `npx boaredev install`.
 
-After that, `npx boaredev install` works by package name.
-Depois disso, `npx boaredev install` funciona pelo nome do pacote.
+🇺🇸 Use the steps below only when you want to publish a new version.
+🇧🇷 Use os passos abaixo apenas quando quiser publicar uma nova versão.
 
-First time checklist.
-Checklist da primeira publicação.
-
-1. Create an account on [npmjs.com](https://www.npmjs.com/).
-1. Crie uma conta em [npmjs.com](https://www.npmjs.com/).
-2. In the terminal, run `npm login`.
-2. No terminal, rode `npm login`.
-3. Validate the package with `npm run pack:check`.
-3. Valide o pacote com `npm run pack:check`.
-4. Simulate the publish with `npm run publish:dry-run`.
-4. Simule a publicação com `npm run publish:dry-run`.
-5. Publish for real with `npm publish`.
-5. Publique de verdade com `npm publish`.
-
-Commands.
-Comandos.
+1. 🇺🇸 Update the version in `package.json`.
+   🇧🇷 Atualize a versão no `package.json`.
+2. 🇺🇸 Run `npm run pack:check`.
+   🇧🇷 Rode `npm run pack:check`.
+3. 🇺🇸 Run `npm run publish:dry-run`.
+   🇧🇷 Rode `npm run publish:dry-run`.
+4. 🇺🇸 Publish with `npm publish`.
+   🇧🇷 Publique com `npm publish`.
 
 ```bash
-npm login
 npm run pack:check
 npm run publish:dry-run
 npm publish
 ```
 
-If npm says you are not logged in, run `npm login` again.
-Se o npm disser que você não está logado, rode `npm login` novamente.
+🇺🇸 If npm asks for a one-time password, use your npm 2FA code.
+🇧🇷 Se o npm pedir um código temporário, use o código 2FA da sua conta npm.
 
-If npm says the package name is unavailable, you will need a different package name.
-Se o npm disser que o nome do pacote não está disponível, você vai precisar de outro nome de pacote.
+🇺🇸 If npm says the version already exists, bump the version before publishing again.
+🇧🇷 Se o npm disser que a versão já existe, aumente a versão antes de publicar novamente.
